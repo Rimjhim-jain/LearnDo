@@ -5,7 +5,6 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { fetchAudio, translateWords } from "../utils/features";
 import { useDispatch, useSelector } from "react-redux";
 import { clearState, getWordsFail, getWordsRequest, getWordsSuccess } from "../redux/slices";
-import Loader from "./Loader";
 
 const Learning = () => {
 
@@ -17,7 +16,7 @@ const Learning = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const {loading,error,words} = useSelector((state : {root: StateType}) => state.root);
+  const {error,words} = useSelector((state : {root: StateType}) => state.root);
 
   const audioHandler = async () => {
 
@@ -55,7 +54,6 @@ const Learning = () => {
 
   },[]);
 
-  if(loading) return <Loader/>;
 
   return (
     <Container maxWidth="sm" sx={{
