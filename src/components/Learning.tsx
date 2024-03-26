@@ -55,7 +55,7 @@ const Learning = () => {
 
   },[]);
 
-  // if(loading) return <Loader/>;
+  if(loading) return <Loader/>;
 
   return (
     <Container maxWidth="sm" sx={{
