@@ -1,5 +1,5 @@
 import axios from "axios";
-import { generate } from "random-words";
+import {generate} from "random-words";
 import _ from 'lodash';
 
 const generateMCQ = (meaning:{
@@ -22,9 +22,13 @@ const generateMCQ = (meaning:{
 export const translateWords = async(params: LangType):Promise<WordType[]> => {
     try{
             
-       const words = generate(8).map((i) => ({
-        Text:i,
-       }));
+    const randomWordArray: string | string[] = generate(8);
+
+    // Ensure randomWordArray is an array, even if it's a single string
+    const words: { Text: string; }[] = Array.isArray(randomWordArray)
+    ? randomWordArray.map(word => ({ Text: word }))
+    : [{ Text: randomWordArray }]; 
+
 
        const translateApi = import.meta.env.VITE_TRANSLATE_API;
 
